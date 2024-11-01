@@ -1,0 +1,16 @@
+#!/bin/sh
+
+XBPS="$PWD/XBPS"
+
+FAILED=1
+
+if [ ! -x "$XBPS/usr/bin/xbps-install" ]; then
+    ./setup-xbps.sh
+fi
+
+if [ ! -x "$XBPS/xtools/xchroot" ]; then
+    ./setup-xtools.sh
+fi
+
+export PATH="$XBPS/usr/bin:$PATH"
+export PATH="$XBPS/xtools:$PATH"
